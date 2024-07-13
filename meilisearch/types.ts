@@ -1,3 +1,4 @@
+import { Collections } from "../payload/constants";
 import type {
   EndpointCollectible,
   EndpointPage,
@@ -8,8 +9,7 @@ import type {
   EndpointFile,
   EndpointRecorder,
   EndpointChronologyEvent,
-} from "payload/endpoint-types";
-import { Collections } from "../payload/constants";
+} from "../payload/endpoint-types";
 
 export type MeiliDocument = {
   meilid: string;
