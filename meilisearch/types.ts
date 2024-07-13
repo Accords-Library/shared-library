@@ -17,6 +17,7 @@ export type MeiliDocument = {
   languages: string[];
   title?: string;
   content?: string;
+  updatedAt?: number;
 } & (
   | {
       type: Collections.Collectibles;
