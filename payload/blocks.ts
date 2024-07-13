@@ -1,4 +1,4 @@
-import { RichTextContent } from "./rich-text";
+import type { RichTextContent } from "./rich-text";
 
 export interface TranscriptBlock extends GenericBlock {
     lines: (LineBlock | CueBlock)[];

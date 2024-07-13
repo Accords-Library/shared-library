@@ -1,17 +1,17 @@
-import { Collections } from "./constants";
 import {
-  EndpointAudioPreview,
-  EndpointImagePreview,
-  EndpointVideoPreview,
-} from "./endpoint-types";
-import {
-  GenericBlock,
-  SectionBlock,
-  TranscriptBlock,
-  BreakBlock,
+  type GenericBlock,
+  type SectionBlock,
+  type TranscriptBlock,
+  type BreakBlock,
   isBlockTranscriptBlock,
   isBlockBreakBlock,
 } from "./blocks";
+import { Collections } from "./constants";
+import type {
+  EndpointImagePreview,
+  EndpointVideoPreview,
+  EndpointAudioPreview,
+} from "./endpoint-types";
 
 export type RichTextContent = {
   root: {

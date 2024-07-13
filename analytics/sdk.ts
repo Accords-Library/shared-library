@@ -1,4 +1,4 @@
-import { TrackRequestParams } from "./types";
+import type { TrackRequestParams } from "./types";
 
 type AnalyticsBody = Record<string, unknown> & {
   type: "event" | "request";

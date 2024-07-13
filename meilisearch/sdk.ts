@@ -1,4 +1,4 @@
-import { MeiliDocument, SearchRequest, SearchResponse } from "./types";
+import type { MeiliDocument, SearchRequest, SearchResponse } from "./types";
 
 export class MeilisearchSDK {
   constructor(
