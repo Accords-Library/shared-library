@@ -51,7 +51,7 @@ export const getSDKEndpoint = {
   getLoginEndpoint: () => `/${Collections.Recorders}/login`,
 };
 
-type PayloadSDKResponse<T> = {
+export type PayloadSDKResponse<T> = {
   data: T;
   endpointCalled: string;
 };
