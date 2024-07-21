@@ -8,10 +8,7 @@ type AnalyticsBody = Record<string, unknown> & {
 export class AnalyticsSDK {
   constructor(private readonly apiURL: string) {}
 
-  trackRequest(
-    request: Request,
-    { clientAddress, locale, responseStatus }: TrackRequestParams
-  ) {
+  trackRequest(request: Request, { clientAddress, locale, responseStatus }: TrackRequestParams) {
     const userAgent = request.headers.get("User-Agent");
     const acceptLanguage = request.headers.get("Accept-Language");
     const { method, url: stringUrl, referrer } = request;

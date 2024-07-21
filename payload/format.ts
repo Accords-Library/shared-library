@@ -22,17 +22,12 @@ const formatList = (node: RichTextListNode) => {
 
 const formatBlock = (node: RichTextBlockNode) => {
   if (isBlockNodeSectionBlock(node)) {
-    return (
-      `\n\n${node.fields.blockName}\n` +
-      formatRichTextContentToString(node.fields.content)
-    );
+    return `\n\n${node.fields.blockName}\n` + formatRichTextContentToString(node.fields.content);
   } else if (isBlockNodeTranscriptBlock(node)) {
     return node.fields.lines
       .map((block) => {
         if (isBlockLineBlock(block)) {
-          return `${block.blockName} | ${formatRichTextContentToString(
-            block.content
-          )}`;
+          return `${block.blockName} | ${formatRichTextContentToString(block.content)}`;
         } else if (isBlockCueBlock(block)) {
           return formatRichTextContentToString(block.content);
         }
@@ -71,9 +66,8 @@ const formatNode = (node: RichTextNode): string => {
   return "";
 };
 
-export const formatRichTextContentToString = (
-  content: RichTextContent
-): string => content.root.children.map(formatNode).join("\n\n");
+export const formatRichTextContentToString = (content: RichTextContent): string =>
+  content.root.children.map(formatNode).join("\n\n");
 
 export const formatInlineTitle = ({
   pretitle,

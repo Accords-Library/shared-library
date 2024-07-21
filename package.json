@@ -1,0 +1,13 @@
+{
+  "name": "shared-library",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "prettier": "prettier --list-different --end-of-line auto --write ."
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "3.3.3"
+  }
+}

@@ -28,10 +28,8 @@ export const getSDKEndpoint = {
   getCurrenciesEndpoint: () => `/${Collections.Currencies}/all`,
   getWordingsEndpoint: () => `/${Collections.Wordings}/all`,
   getPageEndpoint: (slug: string) => `/${Collections.Pages}/slug/${slug}`,
-  getCollectibleEndpoint: (slug: string) =>
-    `/${Collections.Collectibles}/slug/${slug}`,
-  getCollectibleScansEndpoint: (slug: string) =>
-    `/${Collections.Collectibles}/slug/${slug}/scans`,
+  getCollectibleEndpoint: (slug: string) => `/${Collections.Collectibles}/slug/${slug}`,
+  getCollectibleScansEndpoint: (slug: string) => `/${Collections.Collectibles}/slug/${slug}/scans`,
   getCollectibleScanPageEndpoint: (slug: string, index: string) =>
     `/${Collections.Collectibles}/slug/${slug}/scans/${index}`,
   getCollectibleGalleryEndpoint: (slug: string) =>
@@ -39,8 +37,7 @@ export const getSDKEndpoint = {
   getCollectibleGalleryImageEndpoint: (slug: string, index: string) =>
     `/${Collections.Collectibles}/slug/${slug}/gallery/${index}`,
   getChronologyEventsEndpoint: () => `/${Collections.ChronologyEvents}/all`,
-  getChronologyEventByIDEndpoint: (id: string) =>
-    `/${Collections.ChronologyEvents}/id/${id}`,
+  getChronologyEventByIDEndpoint: (id: string) => `/${Collections.ChronologyEvents}/id/${id}`,
   getImageByIDEndpoint: (id: string) => `/${Collections.Images}/id/${id}`,
   getAudioByIDEndpoint: (id: string) => `/${Collections.Audios}/id/${id}`,
   getVideoByIDEndpoint: (id: string) => `/${Collections.Videos}/id/${id}`,
@@ -117,9 +114,7 @@ export class PayloadSDK {
 
     const result = await fetch(`${this.apiURL}${endpoint}`, {
       headers: {
-        Authorization: `JWT ${
-          this.tokenCache?.get() ?? (await this.refreshToken())
-        }`,
+        Authorization: `JWT ${this.tokenCache?.get() ?? (await this.refreshToken())}`,
       },
     });
     this.logResponse(result);
@@ -151,50 +146,34 @@ export class PayloadSDK {
   async getPage(slug: string): Promise<PayloadSDKResponse<EndpointPage>> {
     return await this.request(getSDKEndpoint.getPageEndpoint(slug));
   }
-  async getCollectible(
-    slug: string
-  ): Promise<PayloadSDKResponse<EndpointCollectible>> {
+  async getCollectible(slug: string): Promise<PayloadSDKResponse<EndpointCollectible>> {
     return await this.request(getSDKEndpoint.getCollectibleEndpoint(slug));
   }
-  async getCollectibleScans(
-    slug: string
-  ): Promise<PayloadSDKResponse<EndpointCollectibleScans>> {
+  async getCollectibleScans(slug: string): Promise<PayloadSDKResponse<EndpointCollectibleScans>> {
     return await this.request(getSDKEndpoint.getCollectibleScansEndpoint(slug));
   }
   async getCollectibleScanPage(
     slug: string,
     index: string
   ): Promise<PayloadSDKResponse<EndpointCollectibleScanPage>> {
-    return await this.request(
-      getSDKEndpoint.getCollectibleScanPageEndpoint(slug, index)
-    );
+    return await this.request(getSDKEndpoint.getCollectibleScanPageEndpoint(slug, index));
   }
   async getCollectibleGallery(
     slug: string
   ): Promise<PayloadSDKResponse<EndpointCollectibleGallery>> {
-    return await this.request(
-      getSDKEndpoint.getCollectibleGalleryEndpoint(slug)
-    );
+    return await this.request(getSDKEndpoint.getCollectibleGalleryEndpoint(slug));
   }
   async getCollectibleGalleryImage(
     slug: string,
     index: string
   ): Promise<PayloadSDKResponse<EndpointCollectibleGalleryImage>> {
-    return await this.request(
-      getSDKEndpoint.getCollectibleGalleryImageEndpoint(slug, index)
-    );
+    return await this.request(getSDKEndpoint.getCollectibleGalleryImageEndpoint(slug, index));
   }
-  async getChronologyEvents(): Promise<
-    PayloadSDKResponse<EndpointChronologyEvent[]>
-  > {
+  async getChronologyEvents(): Promise<PayloadSDKResponse<EndpointChronologyEvent[]>> {
     return await this.request(getSDKEndpoint.getChronologyEventsEndpoint());
   }
-  async getChronologyEventByID(
-    id: string
-  ): Promise<PayloadSDKResponse<EndpointChronologyEvent>> {
-    return await this.request(
-      getSDKEndpoint.getChronologyEventByIDEndpoint(id)
-    );
+  async getChronologyEventByID(id: string): Promise<PayloadSDKResponse<EndpointChronologyEvent>> {
+    return await this.request(getSDKEndpoint.getChronologyEventByIDEndpoint(id));
   }
   async getImageByID(id: string): Promise<PayloadSDKResponse<EndpointImage>> {
     return await this.request(getSDKEndpoint.getImageByIDEndpoint(id));
@@ -208,9 +187,7 @@ export class PayloadSDK {
   async getFileByID(id: string): Promise<PayloadSDKResponse<EndpointFile>> {
     return await this.request(getSDKEndpoint.getFileByIDEndpoint(id));
   }
-  async getRecorderByID(
-    id: string
-  ): Promise<PayloadSDKResponse<EndpointRecorder>> {
+  async getRecorderByID(id: string): Promise<PayloadSDKResponse<EndpointRecorder>> {
     return await this.request(getSDKEndpoint.getRecorderByIDEndpoint(id));
   }
   async getAllSdkUrls(): Promise<PayloadSDKResponse<EndpointAllSDKUrls>> {

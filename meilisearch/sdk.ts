@@ -6,11 +6,7 @@ export class MeilisearchSDK {
     private readonly bearer: string
   ) {}
 
-  async search({
-    q,
-    page,
-    types,
-  }: SearchRequest): Promise<SearchResponse<MeiliDocument>> {
+  async search({ q, page, types }: SearchRequest): Promise<SearchResponse<MeiliDocument>> {
     const filter: string[] = [];
 
     if (types) {

@@ -49,7 +49,6 @@ export type MeiliDocumentRequest =
       type: Collections.ChronologyEvents;
     };
 
-
 export type MeiliDocument = MeiliDocumentRequest & {
   docId: string;
   distinctId: string;
