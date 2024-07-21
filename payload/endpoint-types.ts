@@ -66,7 +66,7 @@ export type EndpointFolder = Omit<EndpointFolderPreview, "translations"> & {
         value: EndpointFilePreview;
       }
   )[];
-  parentPages: EndpointSource[];
+  backlinks: EndpointRelation[];
 };
 
 export type EndpointWebsiteConfig = {
@@ -191,7 +191,7 @@ export type EndpointPage = Omit<EndpointPagePreview, "translations"> & {
   })[];
   createdAt: string;
   updatedBy?: EndpointRecorderPreview;
-  parentPages: EndpointSource[];
+  backlinks: EndpointRelation[];
 };
 
 export type EndpointCollectiblePreview = {
@@ -213,10 +213,7 @@ export type EndpointCollectiblePreview = {
   };
 };
 
-export type EndpointCollectible = Omit<
-  EndpointCollectiblePreview,
-  "translations"
-> & {
+export type EndpointCollectible = Omit<EndpointCollectiblePreview, "translations"> & {
   translations: (EndpointCollectiblePreview["translations"][number] & {
     description?: RichTextContent;
   })[];
@@ -284,7 +281,7 @@ export type EndpointCollectible = Omit<
   createdAt: string;
   updatedAt: string;
   updatedBy?: EndpointRecorderPreview;
-  parentPages: EndpointSource[];
+  backlinks: EndpointRelation[];
 };
 
 export type EndpointCollectibleScans = {
@@ -334,7 +331,7 @@ export type EndpointCollectibleScans = {
     insideFlapBack?: EndpointScanImage;
   };
   pages: EndpointScanImage[];
-  parentPages: EndpointSource[];
+  backlinks: EndpointRelation[];
 };
 
 export type EndpointCollectibleGallery = {
@@ -348,7 +345,7 @@ export type EndpointCollectibleGallery = {
     description?: RichTextContent;
   }[];
   images: EndpointPayloadImage[];
-  parentPages: EndpointSource[];
+  backlinks: EndpointRelation[];
 };
 
 export type EndpointCollectibleGalleryImage = {
@@ -363,7 +360,7 @@ export type EndpointCollectibleGalleryImage = {
   image: EndpointImage;
   previousIndex?: string;
   nextIndex?: string;
-  parentPages: EndpointSource[];
+  backlinks: EndpointRelation[];
 };
 
 export type EndpointCollectibleScanPage = {
@@ -378,7 +375,7 @@ export type EndpointCollectibleScanPage = {
   image: EndpointScanImage;
   previousIndex?: string;
   nextIndex?: string;
-  parentPages: EndpointSource[];
+  backlinks: EndpointRelation[];
 };
 
 export type EndpointScanImage = PayloadImage & {
@@ -402,7 +399,7 @@ export type EndpointChronologyEvent = {
     day?: number;
   };
   events: {
-    sources: EndpointSource[];
+    sources: EndpointRelation[];
     translations: {
       language: string;
       sourceLanguage: string;
@@ -414,34 +411,30 @@ export type EndpointChronologyEvent = {
   }[];
 };
 
-export type EndpointSourcePreview = {
-  id: string;
-  slug: string;
-  translations: {
-    language: string;
-    pretitle?: string;
-    title: string;
-    subtitle?: string;
-  }[];
-};
-
-export type EndpointSource =
-  | { type: "url"; url: string; label: string }
+export type EndpointCollectibleRelationRange =
+  | { type: "page"; page: number }
+  | { type: "timestamp"; timestamp: string }
   | {
-      type: "collectible";
-      collectible: EndpointSourcePreview;
-      range?:
-        | { type: "page"; page: number }
-        | { type: "timestamp"; timestamp: string }
-        | {
-            type: "custom";
-            translations: { language: string; note: string }[];
-          };
+      type: "custom";
+      translations: { language: string; note: string }[];
+    };
+
+export type EndpointRelation =
+  | {
+      type: Collections.Collectibles;
+      value: EndpointCollectiblePreview;
+      range?: EndpointCollectibleRelationRange;
     }
-  | { type: "page"; page: EndpointSourcePreview }
-  | { type: "folder"; folder: EndpointSourcePreview }
-  | { type: "scans"; collectible: EndpointSourcePreview }
-  | { type: "gallery"; collectible: EndpointSourcePreview };
+  | { type: Collections.Pages; value: EndpointPagePreview }
+  | { type: Collections.Folders; value: EndpointFolderPreview }
+  | { type: Collections.Images; value: EndpointImagePreview }
+  | { type: Collections.Audios; value: EndpointAudioPreview }
+  | { type: Collections.Videos; value: EndpointVideoPreview }
+  | { type: Collections.ChronologyEvents; value: EndpointChronologyEvent }
+  | { type: Collections.Files; value: EndpointFilePreview }
+  | { type: Collections.Tags; value: EndpointTag }
+  | { type: Collections.Recorders; value: EndpointRecorderPreview }
+  | { type: "url"; url: string; label: string };
 
 export type EndpointMediaPreview = {
   id: string;
@@ -465,6 +458,7 @@ export type EndpointMedia = Omit<EndpointMediaPreview, "translations"> & {
     description?: RichTextContent;
   })[];
   credits: EndpointCredit[];
+  backlinks: EndpointRelation[];
 };
 
 export type EndpointImagePreview = EndpointMediaPreview & {
