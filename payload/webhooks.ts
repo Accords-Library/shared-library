@@ -1,24 +1,25 @@
+import type { SDKEndpointNames } from "./sdk";
+
 export type EndpointChange = {
   url: string;
 } & (
-  | { type: "getConfig" }
-  | { type: "getFolder"; slug: string }
-  | { type: "getLanguages" }
-  | { type: "getCurrencies" }
-  | { type: "getWordings" }
-  | { type: "getPage"; slug: string }
-  | { type: "getCollectible"; slug: string }
-  | { type: "getCollectibleScans"; slug: string }
-  | { type: "getCollectibleScanPage"; slug: string; index: string }
-  | { type: "getCollectibleGallery"; slug: string }
-  | { type: "getCollectibleGalleryImage"; slug: string; index: string }
-  | { type: "getChronologyEvents" }
-  | { type: "getChronologyEventByID"; id: string }
-  | { type: "getImageByID"; id: string }
-  | { type: "getAudioByID"; id: string }
-  | { type: "getVideoByID"; id: string }
-  | { type: "getFileByID"; id: string }
-  | { type: "getRecorderByID"; id: string }
-  | { type: "getAllSdkUrls" }
-  | { type: "getAllIds" }
+  | { type: SDKEndpointNames.getWebsiteConfig }
+  | { type: SDKEndpointNames.getFolder; slug: string }
+  | { type: SDKEndpointNames.getLanguages }
+  | { type: SDKEndpointNames.getCurrencies }
+  | { type: SDKEndpointNames.getWordings }
+  | { type: SDKEndpointNames.getPage; slug: string }
+  | { type: SDKEndpointNames.getCollectible; slug: string }
+  | { type: SDKEndpointNames.getCollectibleScans; slug: string }
+  | { type: SDKEndpointNames.getCollectibleScanPage; slug: string; index: string }
+  | { type: SDKEndpointNames.getCollectibleGallery; slug: string }
+  | { type: SDKEndpointNames.getCollectibleGalleryImage; slug: string; index: string }
+  | { type: SDKEndpointNames.getChronologyEvents }
+  | { type: SDKEndpointNames.getChronologyEventByID; id: string }
+  | { type: SDKEndpointNames.getImageByID; id: string }
+  | { type: SDKEndpointNames.getAudioByID; id: string }
+  | { type: SDKEndpointNames.getVideoByID; id: string }
+  | { type: SDKEndpointNames.getFileByID; id: string }
+  | { type: SDKEndpointNames.getRecorderByID; id: string }
 );
+

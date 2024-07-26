@@ -542,19 +542,3 @@ export type PayloadImage = PayloadMedia & {
   width: number;
   height: number;
 };
-
-export type EndpointAllSDKUrls = {
-  urls: string[];
-};
-
-export type EndpointAllIds = {
-  collectibles: { slugs: string[] };
-  pages: { slugs: string[] };
-  folders: { slugs: string[] };
-  videos: { ids: string[] };
-  audios: { ids: string[] };
-  images: { ids: string[] };
-  files: { ids: string[] };
-  recorders: { ids: string[] };
-  chronologyEvents: { ids: string[] };
-};
