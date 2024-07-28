@@ -11,45 +11,7 @@ import type {
   EndpointChronologyEvent,
 } from "../payload/endpoint-types";
 
-export type MeiliDocumentRequest =
-  | {
-      slug: string;
-      type: Collections.Collectibles;
-    }
-  | {
-      slug: string;
-      type: Collections.Pages;
-    }
-  | {
-      slug: string;
-      type: Collections.Folders;
-    }
-  | {
-      id: string;
-      type: Collections.Videos;
-    }
-  | {
-      id: string;
-      type: Collections.Audios;
-    }
-  | {
-      id: string;
-      type: Collections.Images;
-    }
-  | {
-      id: string;
-      type: Collections.Files;
-    }
-  | {
-      id: string;
-      type: Collections.Recorders;
-    }
-  | {
-      id: string;
-      type: Collections.ChronologyEvents;
-    };
-
-export type MeiliDocument = MeiliDocumentRequest & {
+export type MeiliDocument = {
   docId: string;
   distinctId: string;
   languages: string[];
@@ -58,46 +20,46 @@ export type MeiliDocument = MeiliDocumentRequest & {
   updatedAt?: number;
   endpointCalled: string;
 } & (
-    | {
-        type: Collections.Collectibles;
-        data: EndpointCollectible;
-      }
-    | {
-        type: Collections.Pages;
-        data: EndpointPage;
-      }
-    | {
-        type: Collections.Folders;
-        data: EndpointFolder;
-      }
-    | {
-        type: Collections.Videos;
-        data: EndpointVideo;
-      }
-    | {
-        type: Collections.Audios;
-        data: EndpointAudio;
-      }
-    | {
-        type: Collections.Images;
-        data: EndpointImage;
-      }
-    | {
-        type: Collections.Files;
-        data: EndpointFile;
-      }
-    | {
-        type: Collections.Recorders;
-        data: EndpointRecorder;
-      }
-    | {
-        type: Collections.ChronologyEvents;
-        data: {
-          date: EndpointChronologyEvent["date"];
-          event: EndpointChronologyEvent["events"][number];
-        };
-      }
-  );
+  | {
+      type: Collections.Collectibles;
+      data: EndpointCollectible;
+    }
+  | {
+      type: Collections.Pages;
+      data: EndpointPage;
+    }
+  | {
+      type: Collections.Folders;
+      data: EndpointFolder;
+    }
+  | {
+      type: Collections.Videos;
+      data: EndpointVideo;
+    }
+  | {
+      type: Collections.Audios;
+      data: EndpointAudio;
+    }
+  | {
+      type: Collections.Images;
+      data: EndpointImage;
+    }
+  | {
+      type: Collections.Files;
+      data: EndpointFile;
+    }
+  | {
+      type: Collections.Recorders;
+      data: EndpointRecorder;
+    }
+  | {
+      type: Collections.ChronologyEvents;
+      data: {
+        date: EndpointChronologyEvent["date"];
+        event: EndpointChronologyEvent["events"][number];
+      };
+    }
+);
 
 export type SearchResponse<T> = {
   hits: T[];
