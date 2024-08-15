@@ -331,6 +331,7 @@ export type EndpointCollectibleScans = {
     insideFlapBack?: EndpointScanImage;
   };
   pages: EndpointScanImage[];
+  backlinks: EndpointRelation[];
 };
 
 export type EndpointCollectibleScanPage = {
@@ -345,6 +346,7 @@ export type EndpointCollectibleScanPage = {
   image: EndpointScanImage;
   previousIndex?: string;
   nextIndex?: string;
+  backlinks: EndpointRelation[];
 };
 
 export type EndpointCollectibleGallery = {
@@ -358,6 +360,7 @@ export type EndpointCollectibleGallery = {
     description?: RichTextContent;
   }[];
   images: EndpointPayloadImage[];
+  backlinks: EndpointRelation[];
 };
 
 export type EndpointCollectibleGalleryImage = {
@@ -372,7 +375,9 @@ export type EndpointCollectibleGalleryImage = {
   image: EndpointImage;
   previousIndex?: string;
   nextIndex?: string;
+  backlinks: EndpointRelation[];
 };
+
 export type EndpointScanImage = PayloadImage & {
   index: string;
   sizes: PayloadImage[];
@@ -418,6 +423,7 @@ export type EndpointRelation =
   | {
       type: Collections.Collectibles;
       value: EndpointCollectiblePreview;
+      subpage?: "none" | "scans" | "gallery";
       range?: EndpointCollectibleRelationRange;
     }
   | { type: Collections.Pages; value: EndpointPagePreview }
