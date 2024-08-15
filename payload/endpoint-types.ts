@@ -331,36 +331,6 @@ export type EndpointCollectibleScans = {
     insideFlapBack?: EndpointScanImage;
   };
   pages: EndpointScanImage[];
-  backlinks: EndpointRelation[];
-};
-
-export type EndpointCollectibleGallery = {
-  slug: string;
-  thumbnail?: EndpointPayloadImage;
-  translations: {
-    language: string;
-    pretitle?: string;
-    title: string;
-    subtitle?: string;
-    description?: RichTextContent;
-  }[];
-  images: EndpointPayloadImage[];
-  backlinks: EndpointRelation[];
-};
-
-export type EndpointCollectibleGalleryImage = {
-  slug: string;
-  translations: {
-    language: string;
-    pretitle?: string;
-    title: string;
-    subtitle?: string;
-    description?: RichTextContent;
-  }[];
-  image: EndpointImage;
-  previousIndex?: string;
-  nextIndex?: string;
-  backlinks: EndpointRelation[];
 };
 
 export type EndpointCollectibleScanPage = {
@@ -375,9 +345,34 @@ export type EndpointCollectibleScanPage = {
   image: EndpointScanImage;
   previousIndex?: string;
   nextIndex?: string;
-  backlinks: EndpointRelation[];
 };
 
+export type EndpointCollectibleGallery = {
+  slug: string;
+  thumbnail?: EndpointPayloadImage;
+  translations: {
+    language: string;
+    pretitle?: string;
+    title: string;
+    subtitle?: string;
+    description?: RichTextContent;
+  }[];
+  images: EndpointPayloadImage[];
+};
+
+export type EndpointCollectibleGalleryImage = {
+  slug: string;
+  translations: {
+    language: string;
+    pretitle?: string;
+    title: string;
+    subtitle?: string;
+    description?: RichTextContent;
+  }[];
+  image: EndpointImage;
+  previousIndex?: string;
+  nextIndex?: string;
+};
 export type EndpointScanImage = PayloadImage & {
   index: string;
   sizes: PayloadImage[];
