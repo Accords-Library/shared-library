@@ -187,6 +187,7 @@ export type EndpointPage = Omit<EndpointPagePreview, "translations"> & {
     summary?: RichTextContent;
     content: RichTextContent;
     credits: EndpointCredit[];
+    sourceUrls?: EndpointURL[];
     toc: TableOfContentEntry[];
   })[];
   createdAt: string;
@@ -221,7 +222,7 @@ export type EndpointCollectible = Omit<EndpointCollectiblePreview, "translations
   nature: CollectibleNature;
   gallery?: { count: number; thumbnail: EndpointPayloadImage };
   scans?: { count: number; thumbnail: EndpointPayloadImage };
-  urls: { url: string; label: string }[];
+  urls: EndpointURL[];
   size?: {
     width: number;
     height: number;
@@ -435,7 +436,9 @@ export type EndpointRelation =
   | { type: Collections.Files; value: EndpointFilePreview }
   | { type: Collections.Tags; value: EndpointTag }
   | { type: Collections.Recorders; value: EndpointRecorderPreview }
-  | { type: "url"; url: string; label: string };
+  | { type: "url"; value: EndpointURL };
+
+export type EndpointURL = { url: string; label: string };
 
 export type EndpointMediaPreview = {
   id: string;
