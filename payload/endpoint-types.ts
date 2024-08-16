@@ -187,7 +187,7 @@ export type EndpointPage = Omit<EndpointPagePreview, "translations"> & {
     summary?: RichTextContent;
     content: RichTextContent;
     credits: EndpointCredit[];
-    sourceUrls?: EndpointURL[];
+    sourceUrls: EndpointURL[];
     toc: TableOfContentEntry[];
   })[];
   createdAt: string;
